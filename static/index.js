@@ -115,12 +115,12 @@ function setBackend(backend) {
 
 
 
-var engineSelected = localStorage.getItem("engine") || "Google";
-var currentSearchURL = "https://www.google.com/search?q="
+var engineSelected = localStorage.getItem("engine") || "bing";
+var currentSearchURL = "https://www.bing.com/search?q="
 function engineSwitch(sel) {
   localStorage.setItem("engine", sel.value);
-  if (localStorage.getItem("engine") === "Google") {
-    currentSearchURL = "https://www.google.com/search?q=";
+  if (localStorage.getItem("engine") === "bing") {
+    currentSearchURL = "https://www.bing.com/search?q=";
   } else if (localStorage.getItem("engine") === "Bing") {
     currentSearchURL = "https://www.bing.com/search?q=";
   } else if (localStorage.getItem("engine") === "DuckDuckGo") {
@@ -128,8 +128,8 @@ function engineSwitch(sel) {
   }
 }
 
-if (localStorage.getItem("engine") === "Google") {
-  currentSearchURL = "https://www.google.com/search?q=";
+if (localStorage.getItem("engine") === "bing") {
+  currentSearchURL = "https://www.bing.com/search?q=";
 } else if (localStorage.getItem("engine") === "Bing") {
   currentSearchURL = "https://www.bing.com/search?q=";
 } else if (localStorage.getItem("engine") === "DuckDuckGo") {
@@ -254,9 +254,9 @@ searchInput.addEventListener('input', function() {
     return;
   }
 
-  // Create a script element to fetch suggestions from Google's Autocomplete API
+  // Create a script element to fetch suggestions from bing's Autocomplete API
   const script = document.createElement('script');
-  script.src = `https://suggestqueries.google.com/complete/search?client=firefox&q=${query}&callback=handleSuggestions`;
+  script.src = `https://suggestqueries.bing.com/complete/search?client=firefox&q=${query}&callback=handleSuggestions`;
   document.body.appendChild(script);
 });
 
@@ -355,13 +355,13 @@ const cloakFavicon = (url) => {
 const cloakURL = (url) => {
    if (!/^(https?:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,30}/i.test(url)) {
     alert("You must put a valid URL in the URL box.");
-    url = "https://google.com"
+    url = "https://bing.com"
   } else if (!/^(https?:\/\/)/.test(url)) {
     url = "https://" + url;
   } 
 
   if (url.trim() == "") {
-    url = "https://google.com";
+    url = "https://bing.com";
   }
   window.panicURL = url;
   localStorage.setItem("panicURL", url);
@@ -370,7 +370,7 @@ const cloakURL = (url) => {
   });
 };
 
-window.panicURL = localStorage.getItem("panicURL") || "https://google.com";
+window.panicURL = localStorage.getItem("panicURL") || "https://bing.com";
 window.panicKeys = JSON.parse(localStorage.getItem("panicKeys"));
 
 if (window.panicKeys !== null) {
@@ -928,7 +928,7 @@ function launchAB() {
     const style = iframe.style
     const link = doc.createElement('link')
 
-    const name = localStorage.getItem('title') || 'My Drive - Google Drive'
+    const name = localStorage.getItem('title') || 'My Drive - bing Drive'
     const icon = localStorage.getItem('favicon') || 'https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png'
 
     doc.title = name
@@ -944,7 +944,7 @@ function launchAB() {
     doc.head.appendChild(link)
     doc.body.appendChild(iframe)
 
-    const pLink = localStorage.getItem(encodeURI('pLink')) || 'https://www.google.com/'
+    const pLink = localStorage.getItem(encodeURI('pLink')) || 'https://www.bing.com/'
     location.replace(pLink)
 
     const script = doc.createElement('script')
@@ -970,14 +970,14 @@ function tabSwitch(parse) {
     } else if (parse.value == 'Mathspace') {
       cloakTitle('Mathspace');
       cloakFavicon('https://mathspace-production-static.mathspace.co/static/cache/ea9ab2022ffbb8b29669acc8bd75e6a3b2187553/website/favicons/android-chrome-192x192.png');
-    } else if (parse.value == 'Google') {
-      cloakTitle('Google');
-      cloakFavicon('https://www.google.com/favicon.ico');
+    } else if (parse.value == 'bing') {
+      cloakTitle('bing');
+      cloakFavicon('https://www.bing.com/favicon.ico');
     } else if (parse.value == 'Docs') {
-      cloakTitle('Google Docs');
+      cloakTitle('bing Docs');
       cloakFavicon('https://ssl.gstatic.com/docs/documents/images/kix-favicon-2023q4.ico');
     } else if (parse.value == 'Drive') {
-      cloakTitle('Home - Google Drive');
+      cloakTitle('Home - bing Drive');
       cloakFavicon('https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png');
     } else if (parse.value == 'iXL') {
       cloakTitle('IXL');
@@ -1036,7 +1036,7 @@ if (!inFrame && localStorage.getItem("autolaunch") === 'on' && !navigator.userAg
     const style = iframe.style
     const link = doc.createElement('link')
 
-    const name = localStorage.getItem('title') || 'My Drive - Google Drive'
+    const name = localStorage.getItem('title') || 'My Drive - bing Drive'
     const icon = localStorage.getItem('favicon') || 'https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png'
 
     doc.title = name
@@ -1052,7 +1052,7 @@ if (!inFrame && localStorage.getItem("autolaunch") === 'on' && !navigator.userAg
     doc.head.appendChild(link)
     doc.body.appendChild(iframe)
 
-    const pLink = localStorage.getItem(encodeURI('pLink')) || 'https://www.google.com/'
+    const pLink = localStorage.getItem(encodeURI('pLink')) || 'https://www.bing.com/'
     location.replace(pLink)
 
     const script = doc.createElement('script')
