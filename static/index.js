@@ -217,7 +217,7 @@ function log() {
   setTimeout(
     console.log.bind(
       console,
-      `%c Information: \n Online: ${online} \n URL: ${diagnosticDomain} \n Browser: ${browserName} \n UA: ${userAgent}`,
+      %c Information: \n Online: ${online} \n URL: ${diagnosticDomain} \n Browser: ${browserName} \n UA: ${userAgent},
       "background: grey;color:white;padding:5px;line-height: 26px; border-radius: 5px;font-size:12px;"
     )
   );
@@ -256,7 +256,7 @@ searchInput.addEventListener('input', function() {
 
   // Create a script element to fetch suggestions from bing's Autocomplete API
   const script = document.createElement('script');
-  script.src = `https://suggestqueries.bing.com/complete/search?client=firefox&q=${query}&callback=handleSuggestions`;
+  script.src = https://suggestqueries.bing.com/complete/search?client=firefox&q=${query}&callback=handleSuggestions;
   document.body.appendChild(script);
 });
 
@@ -269,7 +269,7 @@ function handleSuggestions(data) {
 function showSuggestions(suggestions) {
   let html = '';
   suggestions.forEach(suggestion => {
-    html += `<div>${suggestion}</div>`;
+    html += <div>${suggestion}</div>;
   });
   suggestionsList.innerHTML = html;
 }
@@ -456,9 +456,8 @@ const openNewtab = () => {
 
 let splashtext = [
   "Now owned by Jason Quadrino!",
-  "That's why it's the fastest proxy in the world"
-];
-
+  "Now owned by Jason Quadrino!",
+]
 
 const runService = async (url, override, overrideadrbar) => {
   if (url.trim() == "") return;
@@ -694,7 +693,7 @@ const ts = new TabSystem({
 
 const createNewTab = () => {
   ts.setActiveTab(ts.addTab(new Tab()));
- ts.activeTab.getTabElement().querySelector("#quote").innerText = splashtext.join('\n');
+  ts.activeTab.getTabElement().querySelector("#quote").innerText = splashtext[Math.floor(Math.random() * splashtext.length)];
   ts.activeTab.getTabElement().querySelector('#adrbar2').addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -892,14 +891,14 @@ function removeBookmark(bookmark) {
 function addBookmark(bookmark) {
   var bookmarkEl = document.createElement("div");
   bookmarkEl.classList.add("bookmark");
-  bookmarkEl.innerHTML = `
+  bookmarkEl.innerHTML = 
     <span onclick="runService('${bookmark[2]}', true, '${bookmark[1]}')">
       ${bookmark[1]}
     </span>
     <div class="bookmarkClose" onclick="removeBookmark(${bookmark[0]})">
       <span>+</span>
     </div>
-  `;
+  ;
   bookmarkEl.id = bookmark[0];
   document.getElementById("bookmarksBar").appendChild(bookmarkEl);
   if (bookmarks.length > 0) {
@@ -949,13 +948,13 @@ function launchAB() {
     location.replace(pLink)
 
     const script = doc.createElement('script')
-    script.textContent = `
+    script.textContent = 
       window.onbeforeunload = function (event) {
         const confirmationMessage = 'Leave Site?';
         (event || window.event).returnValue = confirmationMessage;
         return confirmationMessage;
       };
-    `
+    
     doc.head.appendChild(script)
   }
 }
@@ -1057,13 +1056,13 @@ if (!inFrame && localStorage.getItem("autolaunch") === 'on' && !navigator.userAg
     location.replace(pLink)
 
     const script = doc.createElement('script')
-    script.textContent = `
+    script.textContent = 
       window.onbeforeunload = function (event) {
         const confirmationMessage = 'Leave Site?';
         (event || window.event).returnValue = confirmationMessage;
         return confirmationMessage;
       };
-    `
+    
     doc.head.appendChild(script)
   }
 }
@@ -1256,7 +1255,7 @@ function handleTargets() {
       } else if (element.getAttribute('target') === '_blank') {
         const href = element.getAttribute('href');
         element.removeAttribute('target');
-        element.setAttribute('onclick', `runService(${href}, true)`);
+        element.setAttribute('onclick', runService(${href}, true));
       }
   });
 }
