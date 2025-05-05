@@ -456,8 +456,9 @@ const openNewtab = () => {
 
 let splashtext = [
   "Now owned by Jason Quadrino!",
-  "Now owned by Jason Quadrino!",
-]
+  "That's why it's the fastest proxy in the world"
+];
+
 
 const runService = async (url, override, overrideadrbar) => {
   if (url.trim() == "") return;
@@ -693,7 +694,7 @@ const ts = new TabSystem({
 
 const createNewTab = () => {
   ts.setActiveTab(ts.addTab(new Tab()));
-  ts.activeTab.getTabElement().querySelector("#quote").innerText = splashtext[Math.floor(Math.random() * splashtext.length)];
+ ts.activeTab.getTabElement().querySelector("#quote").innerText = splashtext.join('\n');
   ts.activeTab.getTabElement().querySelector('#adrbar2').addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
