@@ -1,3 +1,5 @@
-name = "abyss-proxy"
+name = "jq"
 main = "index.mjs"
 compatibility_date = "2024-05-06"
+compatibility_flags = ["nodejs_compat"]
+module = true
